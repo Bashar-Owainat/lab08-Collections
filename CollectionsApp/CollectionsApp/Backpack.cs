@@ -7,27 +7,32 @@ using System.Threading.Tasks;
 
 namespace CollectionsApp
 {
-    class Backpack<T> : IBag<T>
+    public class Backpack<T> : IBag<T>
     {
-        public Dictionary<string, Book> Bag = new Dictionary<string, Book>();
+        public List<T> Bag = new List<T>();
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+           foreach(T item in Bag)
+            {
+                yield return item;
+            }
         }
 
         public void Pack(T item)
         {
-            throw new NotImplementedException();
+            Bag.Add(item);
         }
 
         public T Unpack(int index)
         {
-            throw new NotImplementedException();
+            T item = Bag[index];
+            Bag.RemoveAt(index);
+            return item;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }

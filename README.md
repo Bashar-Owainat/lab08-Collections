@@ -30,3 +30,36 @@ In class Book we have these properties:
 In class Backpack we have these methods:
 - Pack: to add a borrowed book
 - Unpack: to remove a borrowed book
+
+
+## Demo
+In this image we viewed all books
+
+![](Screenshot-371.png)
+
+We added a book called Test1
+
+![](Screenshot-372.png)
+
+and we can see Test1 added to the books here
+
+![](Screenshot-373.png)
+
+Here we borrowed book2
+
+![](Screenshot-374.png)
+
+And we no longer see it in the library list
+
+![](Screenshot-375.png)
+
+but we can find it in the Borrowed books list
+
+![](Screenshot-376.png)
+
+here we chose to return it back to the library
+
+![](Screenshot-377.png)
+
+and now we can see it in the library
+![](Screenshot-378.png)

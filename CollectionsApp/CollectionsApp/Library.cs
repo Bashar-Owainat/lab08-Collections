@@ -11,9 +11,11 @@ namespace CollectionsApp
     {
         
 
-        private Dictionary<string, Book> books = new Dictionary<string, Book>();
+        private Dictionary<string, Book> Allbooks = new Dictionary<string, Book>();
 
-        int IReadOnlyCollection<Book>.Count => throw new NotImplementedException();
+       
+
+        public int Count => Allbooks.Count;
 
 
 
@@ -23,7 +25,7 @@ namespace CollectionsApp
         {
 
             Book book = new Book(title, firstName, lastName, numberOfPages);
-            books.Add(title, book);
+            Allbooks.Add(title, book);
 
         }
 
@@ -34,10 +36,12 @@ namespace CollectionsApp
         {
 
 
-            if (books.ContainsKey(title))
+            if (Allbooks.ContainsKey(title))
             {
-                books.Remove(title);
-                return books[title];
+                Book book = Allbooks[title];
+                Allbooks.Remove(title);
+                
+                return book;
             }
             else
             {
@@ -50,23 +54,23 @@ namespace CollectionsApp
         // Return a Book to the library.
         public void Return(Book book)
         {
-            books.Add(book.title, book);
+            Allbooks.Add(book.title, book);
 
         }
 
-
+        
         public IEnumerator<Book> GetEnumerator()
         {
-            //  return (IEnumerator<Book>)(books);
-
-            return null;
-            
+            foreach ( Book book in Allbooks.Values)
+            {
+                yield return book;
+            }
 
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+           return GetEnumerator();
         }
     }
 }
